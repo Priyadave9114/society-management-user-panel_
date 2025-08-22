@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration Form</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4;
+          margin: 0;
+          padding: 40px;
+      }
+
+      h2 {
+          text-align: center;
+          color: #333;
+      }
+
+      form {
+          width: 400px;
+          margin: 0 auto;
+          padding: 25px;
+          background-color: #fff;
+          border-radius: 6px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+
+      label {
+          font-weight: bold;
+          display: block;
+          margin-top: 15px;
+      }
+
+      .mobile-inline {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.code-box {
+    width: 100px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.mobile-box {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"],
+      input[type="tel"],
+      select {
+          width: 100%;
+          padding: 8px;
+          margin-top: 6px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+          margin-top: 20px;
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          border: none;
+          border-radius: 4px;
+          background-color: #007BFF;
+          color: white;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      input[type="submit"]:hover {
+          background-color: #0056b3;
+      }
+
+      ul {
+          color: red;
+          list-style-type: none;
+          padding-left: 0;
+      }
+    </style>
+</head>
+<body>
+  <h2>Registration Form</h2>
+
+  <form action="{{ url_for('registration') }}" method="POST">
+
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          <ul>
+          {% for message in messages %}
+              <li style="color: red;">{{ message }}</li>
+          {% endfor %}
+          </ul>
+      {% endif %}
+      {% endwith %}
+
+      <label for="userid">User ID:<span style="color: red;">*</span></label>
+      <input type="text" id="userid" name="userid"
+             pattern="^[A-Za-z0-9]{8,10}$"
+             title="8-10 characters only (A-Z, a-z, 0-9)"
+             required>
+    
+      <label>Password: <span style="color: red;">*</span></label>
+      <input type="text" name="password" required 
+      title="Must contain A-Z, a-z, 0-9, and !@#$%^&*()">
+
+      <label>Re-enter Password:<span style="color: red;">*</span></label>
+      <input type="password" name="repassword" required>
+
+      <label>Email:<span style="color: red;">*</span></label>
+      <input type="email" name="email"
+       pattern=".+@(gmail\.com|yahoo\.com)$"
+       title="Only @gmail.com or @yahoo.com email addresses are allowed"
+       required>
+
+      <label>Mobile Number:<span style="color: red;">*</span></label>
+      <div class="mobile-inline">
+        <select name="country_code" class="code-box" required>
+        <option value="+91">+91 (India)</option>
+        <option value="+1">+1 (USA)</option>
+        <option value="+44">+44 (UK)</option>
+        <option value="+61">+61 (Australia)</option>
+        <option value="+971">+971 (UAE)</option>
+        <!-- Add more as needed -->
+    </select>
+    <input type="tel" name="mobile" pattern="[0-9]{10}" required class="mobile-box" title="Enter 10-digit number">
+</div>
+
+        <label>Wing:<span style="color: red;">*</span></label>
+        <select name="wing" required>
+        <option value="">--Select Wing--</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+    </select>
+
+        <label>Flat Number:<span style="color: red;">*</span></label>
+        <input type="text" name="flat_number" 
+        pattern="^[0-9]{1,4}$" 
+        title="Enter flat number (3 digits only)" 
+        required>
+
+
+      <label>Security Question:<span style="color: red;">*</span></label>
+      <select name="security_question" required>
+          <option value="">--Select--</option>
+          <option value="pet">What is your pet's name?</option>
+          <option value="school">What is your first school's name?</option>
+          <option value="mother">What is your mother's maiden name?</option>
+      </select>
+
+      <label>Answer:<span style="color: red;">*</span></label>
+      <input type="text" name="security_answer" required>
+
+      <input type="submit" value="Register">
+  </form>
+</body>
+</html>

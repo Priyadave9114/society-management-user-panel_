@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pre-Define Visitor | Society</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 420px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #2c3e50;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 6px;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      outline: none;
+    }
+    input:focus, textarea:focus {
+      border-color: #1d4ed8;
+      box-shadow: 0 0 5px rgba(29, 78, 216, 0.3);
+    }
+    button {
+      margin-top: 15px;
+      background: #1d4ed8;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s ease;
+    }
+    button:hover {
+      background: #153eab;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Pre-Define Visitor</h2>
+    <form action="{{ url_for('visitors') }}" method="POST" enctype="multipart/form-data">
+      
+      <label for="visitor_name">Visitor Name</label>
+      <input type="text" id="visitor_name" name="visitor_name" required>
+
+      <label for="mobile">Mobile Number</label>
+      <input type="text" id="mobile" name="mobile" required>
+
+      <label for="purpose">Purpose</label>
+      <textarea id="purpose" name="purpose" placeholder="Reason for visit..." required></textarea>
+
+      <label for="visit_time">Visit Date & Time</label>
+      <input type="datetime-local" id="visit_time" name="visit_time" required>
+
+      <label for="picture">Visitor Picture</label>
+      <input type="file" id="picture" name="picture" accept="image/*">
+
+      <button type="submit">Add Visitor</button>
+    </form>
+  </div>
+</body>
+</html>

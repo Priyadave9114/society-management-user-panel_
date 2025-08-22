@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Status</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .message-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 400px;
+    }
+    h2 {
+      color: #2C3E50;
+    }
+    p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #1ABC9C;
+    }
+  </style>
+</head>
+<body>
+  <div class="message-box">
+    <h2>Payment Status</h2>
+    <p><strong>User ID:</strong> {{ userid }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Amount:</strong> ₹{{ amount }}</p>
+    <p class="highlight">{{ message }}</p>
+  </div>
+</body>
+</html>

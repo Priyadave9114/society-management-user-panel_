@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forgot Password</title>
+    <style>
+        body {
+            background-color: #f0f4f8;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;          
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Forgot Password</h2>
+    <form action="{{ url_for('forgot') }}" method="POST">
+        <label for="userid">User ID:<span style="color: red;">*</span></label>
+        <input type="text" id="userid" name="userid" required>
+
+        <label for="question">Security Question:<span style="color: red;">*</span></label>
+        <select id="question" name="question" required>
+            <option value="">-- Select a question --</option>
+            <option value="pet">What is your pet's name?</option>
+            <option value="school">What is your first school name?</option>
+            <option value="mother">What is your mother's maiden name?</option>
+            <option value="city">In which city were you born?</option>
+        </select>
+
+        <label for="answer">Answer:<span style="color: red;">*</span></label>
+        <input type="text" id="answer" name="answer" required>
+
+        <input type="submit" value="Reset Password">
+    </form>
+</div>
+
+</body>
+</html>

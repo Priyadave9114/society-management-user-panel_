@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | Society Management</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f2f6fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-wrapper {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        .login-box {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-box h2 {
+            color: #007bff;
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            text-align: left;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #444;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .note {
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        .note a {
+            color: #007bff;
+            text-decoration: none;
+            padding: 20px;
+        }
+
+        .note a:hover {
+            text-decoration: underline;
+        }
+
+        /* Flash messages */
+        .flash-messages {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .flash-messages li {
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .flash-messages .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .flash-messages .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-wrapper">
+    <div class="login-box">
+        <h2>Society Login</h2>
+
+        <form action="{{ url_for('login') }}" method="POST">
+            <label for="userid">User ID:<span style="color: red;">*</span></label>
+             <input type="text" id="userid" name="userid"
+             pattern="^[A-Za-z0-9]{8,10}$"
+             title="8-10 characters only (A-Z, a-z, 0-9)"
+             required>
+
+            <label>Password: <span style="color: red;">*</span></label>
+            <input type="text" name="password" required 
+            title="Must contain A-Z, a-z, 0-9, and !@#$%^&*()">
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p class="note"><a href="{{ url_for('registration') }}">Registration</a>
+        <a href="{{ url_for('forgot') }}" class="note">Forgot Password</a></p>
+    </div>
+</div>
+
+</body>
+</html>

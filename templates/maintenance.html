@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Maintenance Payment</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    header {
+        background-color: #2C3E50;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+
+    nav {
+        background-color: #34495E;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 8px 14px;
+        background: #2C3E50;
+        border-radius: 5px;
+    }
+
+    nav a:hover {
+        background: #1ABC9C;
+    }
+
+    .form-container {
+        max-width: 500px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #2C3E50;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 6px;
+        color: #333;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+    .amount-box {
+        background: #f8f9fa;
+        border: 1px solid #ddd;
+        padding: 12px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+    }
+
+    .amount-box p {
+        margin: 6px 0;
+        font-size: 16px;
+    }
+
+    button {
+        background-color: #2C3E50;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+    }
+
+    button:hover {
+        background-color: #1ABC9C;
+    }
+</style>
+</head>
+<body>
+<header>
+ <h1>Maintenance Payment</h1>
+ <p>Fill details to proceed with payment</p>
+</header>
+
+<nav>
+ <a href="/index">Home</a>
+ <a href="/complaint">Complaints</a>
+ <a href="/visitors">Visitors</a>
+ <a href="/logout">Logout</a>
+</nav>
+
+<div class="form-container">
+    <h2>Add Maintenance</h2>
+    <form method="POST" action="{{ url_for('maintenance') }}">
+        <div class="form-group">
+            <label>User ID:</label>
+            <input type="text" name="userid" value="{{ userid }}" readonly>
+        </div>
+        <div class="form-group">
+            <label>Email ID:</label>
+            <input type="email" name="email" value="{{ email }}" readonly>
+        </div>
+
+        <!-- Amount Section -->
+        <div class="amount-box">
+            <!-- <p><strong>Base Amount:</strong> ₹{{ base_amount }}</p>
+            <p><strong>Penalty:</strong> ₹{{ penalty }}</p> -->
+            <p><strong>Total Payable:</strong> ₹{{ amount }}</p>
+        </div>
+
+        <!-- Hidden input to send amount -->
+        <input type="hidden" id="amount" name="amount" value="{{ amount }}">
+
+        <button type="submit">Submit Payment</button>
+    </form>
+</div>
+</body>
+</html>

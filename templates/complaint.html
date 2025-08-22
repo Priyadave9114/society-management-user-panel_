@@ -1,0 +1,90 @@
+<!-- templates/complaint.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Complaint | Society</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .form-container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 400px;
+    }
+    h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #2c3e50;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 6px;
+    }
+    select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+    select:focus, textarea:focus {
+      border-color: #1d4ed8;
+      box-shadow: 0 0 5px rgba(29, 78, 216, 0.3);
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    button {
+      margin-top: 15px;
+      background: #1d4ed8;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s ease;
+    }
+    button:hover {
+      background: #153eab;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Submit Complaint</h2>
+    <form action="{{ url_for('complaint') }}" method="POST">
+      <!-- Complaint Category -->
+      <label for="complaint_type">Complaint Type</label>
+      <select id="complaint_type" name="complaint_type" required>
+        <option value="" disabled selected>-- Select --</option>
+        <option value="Water Supply">Water Supply</option>
+        <option value="Electricity">Electricity</option>
+        <option value="Maintenance">Maintenance</option>
+        <option value="Security">Security</option>
+        <option value="Parking">Parking</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <!-- Complaint Details -->
+      <label for="details">Complaint Details</label>
+      <textarea id="details" name="details" placeholder="Write your complaint here..." required></textarea>
+
+      <!-- Submit -->
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>

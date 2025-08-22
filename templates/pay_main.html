@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pay Maintenance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f3;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .info {
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        .info p {
+            margin: 10px 0;
+        }
+
+        .highlight {
+            font-weight: bold;
+        }
+
+        .flash {
+            color: green;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash">{{ messages[0] }}</div>
+            {% endif %}
+        {% endwith %}
+
+        <h2>Pay Maintenance</h2>
+
+        <div class="info">
+            <p><span class="highlight">Month:</span> {{ month }}</p>
+            <p><span class="highlight">Due Date:</span> {{ due_date }}</p>
+            <p><span class="highlight">Base Amount:</span> ₹{{ base_amount }}</p>
+            <p><span class="highlight">Penalty:</span> ₹{{ penalty }}</p>
+            <p><span class="highlight">Total Amount:</span> ₹{{ total_amount }}</p>
+        </div>
+
+        <form action="{{ url_for('pay_maintenance') }}" method="POST">
+            <input type="hidden" name="month" value="{{ month }}">
+            <input type="hidden" name="total_amount" value="{{ total_amount }}">
+            <button type="submit">Pay Now</button>
+        </form>
+    </div>
+</body>
+</html>
