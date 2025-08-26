@@ -1,20 +1,9 @@
+from app import app,cursor,mydb
 import os
 import re
-from flask import Flask, render_template, request, redirect, flash, session,url_for
-import mysql.connector
 from datetime import datetime
 from werkzeug.utils import secure_filename
-
-app = Flask(__name__)
-app.secret_key = "test_123"
-
-mydb = mysql.connector.connect(
-      host="localhost",
-      user="root",
-      password="root",
-      database="society"
-)
-cursor = mydb.cursor()
+from flask import Flask, render_template, request, redirect, flash, session,url_for
 
 @app.route('/index')
 def index():
@@ -287,7 +276,3 @@ def logout():
     session.clear()
     flash("You have been logged out successfully.", "success")
     return redirect(url_for("login"))
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
